@@ -75,7 +75,7 @@ main_df_all = main_df[(main_df["date"] >= pd.to_datetime(start_date)) &
                        (main_df["date"] <= pd.to_datetime(end_date))]
 
 # Membuat tampilan dashboard
-st.header('▄▀▄▀▄ :chart: Data Insight :chart: ▀▄▀▄▀▄')
+st.header('▄▀▄▀▄ Data Insight ▀▄▀▄▀▄')
 
 st.subheader('Daily Sharing')
 col1, col2 = st.columns(2)
