@@ -39,7 +39,7 @@ def cluster_manual_df(df):
     return cluster_df
 
 # Membaca data dari file CSV
-main_df = pd.read_csv("all_data.csv")
+main_df = pd.read_csv("Dashboard/all_data.csv")
 
 # Memanggil fungsi
 casual_df = distrib_casual_df(main_df)
