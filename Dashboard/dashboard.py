@@ -53,7 +53,7 @@ image_path = "EDA-BikeSharing\Logo.jpg"
 
 # Membuat tampilan sidebar
 with st.sidebar:
-    st.image(image_path, use_container_width=True)
+    st.image(image_path)
     st.title("Bike Sharing Analysis :sparkles:")
     st.write("Explore the insights of bike sharing data, including usage patterns, weather conditions, and more.")
     st.markdown("### About this Board")
