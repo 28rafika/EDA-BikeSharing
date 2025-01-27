@@ -1,10 +1,12 @@
-import pandas as pd # type: ignore
-import matplotlib.pyplot as plt # type: ignore
-import seaborn as sns # type: ignore
-import streamlit as st # type: ignore 
+import pandas as pd  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
+import seaborn as sns  # type: ignore
+import streamlit as st  # type: ignore
+import datetime as dt  # type: ignore
 
 sns.set(style='dark')
 
+# Fungsi untuk analisis data
 def get_count_by_hour_df(df):
     hour_count_df = df.groupby(by="hour").agg({"total_count": "sum"}).sort_values(by="total_count", ascending=False).head(5)
     return hour_count_df
@@ -33,10 +35,10 @@ def top5_hour_df(df):
 
 def cluster_manual_df(df):
     cluster_df = df.groupby(['Day_Categories', 'weather']).agg({
-    'temperature': 'mean',
-    'humidity': 'mean',
-    'windspeed': 'mean',
-    'total_count': 'mean'}).reset_index()
+        'temperature': 'mean',
+        'humidity': 'mean',
+        'windspeed': 'mean',
+        'total_count': 'mean'}).reset_index()
     return cluster_df
 
 # Membaca data dari file CSV
@@ -50,18 +52,12 @@ month_count_df = get_rent_month_df(main_df)
 weather_df = weather_rent_df(main_df)
 cluster_df = cluster_manual_df(main_df)
 
-# memanggil date untuk sidebar start to end
-datetime_columns = ["date"]
-main_df.sort_values(by="date", inplace=True)
-main_df.reset_index(inplace=True)   
-
-for column in datetime_columns:
-    main_df[column] = pd.to_datetime(main_df[column])
-
+# Mengonversi kolom tanggal
+main_df["date"] = pd.to_datetime(main_df["date"])
 min_date = main_df["date"].min()
 max_date = main_df["date"].max()
 
-#memanggil image
+# Memanggil image
 image_path = "./Logo.jpg"
 
 # Membuat tampilan sidebar
@@ -70,15 +66,13 @@ with st.sidebar:
     st.title("Bike Sharing Analysis :sparkles:")
     st.write("Explore the insights of bike sharing data, including usage patterns, weather conditions, and more.")
 
-# Mengambil start_date & end_date dari date_input
-    start_date, end_date = st.date_input(
-        st.title("Range of Time"),
-        min_value=min_date,
-        max_value=max_date,
-        value=[min_date, max_date])
-  
-main_df_all = main_df[(main_df["date"] >= str(start_date)) & 
-                       (main_df["date"] <= str(end_date))]
+    # Mengambil start_date & end_date dari date_input
+    start_date = st.date_input("Start Date", value=min_date, min_value=min_date, max_value=max_date)
+    end_date = st.date_input("End Date", value=max_date, min_value=min_date, max_value=max_date)
+
+# Filter data berdasarkan tanggal
+main_df_all = main_df[(main_df["date"] >= pd.to_datetime(start_date)) & 
+                       (main_df["date"] <= pd.to_datetime(end_date))]
 
 # Membuat tampilan dashboard
 st.header('▄▀▄▀▄ :chart: Data Insight :chart: ▀▄▀▄▀▄')
