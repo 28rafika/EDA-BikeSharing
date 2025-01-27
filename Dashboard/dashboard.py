@@ -69,9 +69,10 @@ with st.sidebar:
     st.image(image_path)
     st.title("Bike Sharing Analysis :sparkles:")
     st.write("Explore the insights of bike sharing data, including usage patterns, weather conditions, and more.")
+
 # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
-        label='Range of Time',
+        st.title("Range of Time"),
         min_value=min_date,
         max_value=max_date,
         value=[min_date, max_date])
@@ -80,7 +81,7 @@ main_df_all = main_df[(main_df["date"] >= str(start_date)) &
                        (main_df["date"] <= str(end_date))]
 
 # Membuat tampilan dashboard
-st.header('----- Data Insight -----')
+st.header('▄▀▄▀▄ :chart: Data Insight :chart: ▀▄▀▄▀▄')
 
 st.subheader('Daily Sharing')
 col1, col2 = st.columns(2)
