@@ -49,7 +49,7 @@ month_count_df = get_rent_month_df(main_df)
 weather_df = weather_rent_df(main_df)
 cluster_df = cluster_manual_df(main_df)
 
-image_path = "EDA-BikeSharing\Logo.jpg"
+image_path = "./Logo.jpg"
 
 # Membuat tampilan sidebar
 with st.sidebar:
