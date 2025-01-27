@@ -44,14 +44,6 @@ def cluster_manual_df(df):
 # Membaca data dari file CSV
 main_df = pd.read_csv("Dashboard/all_data.csv")
 
-# Memanggil fungsi
-casual_df = distrib_casual_df(main_df)
-registered_df = distrib_registered_df(main_df)
-hour_df = top5_hour_df(main_df)
-month_count_df = get_rent_month_df(main_df)
-weather_df = weather_rent_df(main_df)
-cluster_df = cluster_manual_df(main_df)
-
 # Mengonversi kolom tanggal
 main_df["date"] = pd.to_datetime(main_df["date"])
 min_date = main_df["date"].min()
@@ -69,9 +61,18 @@ with st.sidebar:
     # Mengambil start_date & end_date dari date_input
     start_date = st.date_input("Start Date", value=min_date, min_value=min_date, max_value=max_date)
     end_date = st.date_input("End Date", value=max_date, min_value=min_date, max_value=max_date)
-   
+
+# Filter data berdasarkan tanggal
 main_df_all = main_df[(main_df["date"] >= pd.to_datetime(start_date)) & 
                        (main_df["date"] <= pd.to_datetime(end_date))]
+
+# Memanggil fungsi dengan data yang difilter
+casual_df = distrib_casual_df(main_df_all)
+registered_df = distrib_registered_df(main_df_all)
+hour_df = top5_hour_df(main_df_all)
+month_count_df = get_rent_month_df(main_df_all)
+weather_df = weather_rent_df(main_df_all)
+cluster_df = cluster_manual_df(main_df_all)
 
 # Membuat tampilan dashboard
 st.header('▄▀▄▀▄ Data Insight ▀▄▀▄▀▄')
