@@ -69,8 +69,7 @@ with st.sidebar:
     # Mengambil start_date & end_date dari date_input
     start_date = st.date_input("Start Date", value=min_date, min_value=min_date, max_value=max_date)
     end_date = st.date_input("End Date", value=max_date, min_value=min_date, max_value=max_date)
-
-# Filter data berdasarkan tanggal
+   
 main_df_all = main_df[(main_df["date"] >= pd.to_datetime(start_date)) & 
                        (main_df["date"] <= pd.to_datetime(end_date))]
 
