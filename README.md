@@ -13,7 +13,11 @@ Sebelum download, patikan ada di python environment yang tepat dan semua librari
 pip install streamlit
 pip install -r requirements.txt
 ```
-Kemudian jika sudah, lakukan running file dan copy ini di terminal (pastikan direktori sudah sesuai)
+Kemudian sebelum melakukan running harap cek direktori terlebih dahulu, arahkan ke FOLDER Dashboard (D besar)
+```sh
+cd Dashboard
+```
+kemudian jika direktori sudah benar, jalankan perintah berikut 
 ```sh
 streamlit run dashboard.py
 ```
