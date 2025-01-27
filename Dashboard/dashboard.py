@@ -49,9 +49,10 @@ month_count_df = get_rent_month_df(main_df)
 weather_df = weather_rent_df(main_df)
 cluster_df = cluster_manual_df(main_df)
 
+image_path = "C:\Users\USER\OneDrive\Docs\Learning Files\EDA-BikeSharing\Logo.jpg"
 # Membuat tampilan sidebar
 with st.sidebar:
-    st.image("https://i.pinimg.com/736x/c6/b2/15/c6b215a464c0d106d22d295dc50fcab4.jpg", use_container_width=True)
+    st.image(image_path, use_container_width=True)
     st.title("Bike Sharing Analysis :sparkles:")
     st.write("Explore the insights of bike sharing data, including usage patterns, weather conditions, and more.")
     st.markdown("### About this Board")
