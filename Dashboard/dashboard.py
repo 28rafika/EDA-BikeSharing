@@ -58,9 +58,9 @@ with st.sidebar:
     st.title("Bike Sharing Analysis :sparkles:")
     st.write("Explore the insights of bike sharing data, including usage patterns, weather conditions, and more.")
 
-    st.subheader("Range of Time")
 # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
+        label='Range of Time',
         min_value=min_date,
         max_value=max_date,
         value=[min_date, max_date])
